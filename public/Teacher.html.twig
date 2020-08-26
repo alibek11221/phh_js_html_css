@@ -1,0 +1,107 @@
+{% extends 'Layout.html.twig' %}
+{% block title %}Банк вакансий образовательных учереждений Чеченской Республики{% endblock %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="{{ baseroute }}public/css/arrow.css">
+{% endblock %}
+{% block content %}
+    <div class="breadcrumbs">
+        <div class="container">
+            <ul>
+                <li><a href="../pedagogchr/frontend/index.php"><i class="icon icon-home "></i>Главная</a></li>
+                <li><span>Банк вакансий</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="inner">
+        <div class="container">
+            <h2>Банк вакансий</h2>
+            <div class="base">
+                <form class="form">
+                    <div class="base-box">
+                        <label><span>Район</span>
+                            <select id="base_areas">
+                                <option value="0000">Выберите район</option>
+                            </select>
+                        </label>
+                        <label><span>Школа</span>
+                            <select id="base_schools">
+                            </select>
+                        </label>
+                        <label><span>Должность</span>
+                            <select id="base_dolj">
+                                <option value="0">Выберите должность
+                                </option>
+                            </select>
+                        </label>
+                        <label class="checkbox my_check text-black">
+                            <input id="paymentCheck"
+                                   name="zp"
+                                   type="checkbox"><span></span>Без указанной зарплаты
+                        </label>
+                        <label>
+                            <input id="pay-range" type="text">
+                            <span>Зарплата</span>
+                        </label>
+                        <div style="align-self: center" class="mx-auto">
+                            <a class="styled-link link text-uppercase font-weight-medium lts-2px text-center"
+                               href="/teacher/vacancy_responses">Перейти к откликам </a>
+                        </div>
+                    </div>
+                    <div class="base-box">
+                        <div class="base-box__chekcs">
+                            <span>Стаж работы</span>
+                            <label class="checkbox text-black">
+                                <input id="staj_1" class="staj"
+                                       name="exp"
+                                       type="radio" value="1"><span></span>Начало карьеры, выпускник
+                            </label>
+                            <label class="checkbox text-black">
+                                <input id="staj_2" class="staj"
+                                       name="exp"
+                                       type="radio" value="2"><span></span>1-3 лет
+                            </label>
+                            <label class="checkbox text-black">
+                                <input id="staj_3" class="staj"
+                                       name="exp"
+                                       type="radio" value="3"><span></span>3-5 лет
+                            </label>
+                            <label class="checkbox text-black">
+                                <input id="staj_4" class="staj"
+                                       name="exp"
+                                       type="radio"
+                                       value="4"><span></span>Свыше 5 лет
+                            </label>
+                            <label class="checkbox text-black">
+                                <input id="staj_0" class="staj"
+                                       name="exp"
+                                       type="radio" value="0"><span></span>Любой стаж
+                            </label>
+                        </div>
+                    </div>
+                    <div class="base-box" style="padding: 0" id="some">
+                        <div class="modal-overlay" id="real_vakansiya_fon">
+                            <div class="modal modal_vaca"
+                                 id="real_vakansiya_modal"
+                                 style="display:block;">
+                            </div><!-- modal -->
+                        </div><!-- overlay -->
+                    </div>
+                </form>
+                <!----Результат(блоки с учителями)--------------->
+                <div id="vaca_cards">
+
+                </div>
+                <!----Результат(блоки с учителями)--------------->
+                <div class="base-action name" id="more">
+                    <button><i class="icon icon-refresh "></i>Показать еще</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script src="{{ baseroute }}public/js/main.js"></script>
+    <script src="{{ baseroute }}public/js/teachersApi.js"></script>
+{% endblock %}
+

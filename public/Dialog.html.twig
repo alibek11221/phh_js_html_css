@@ -1,0 +1,38 @@
+{% extends 'Layout.html.twig' %}
+{% block title %}Диалог {{ name }}{% endblock %}
+{% block stylesheets %}
+    <style>
+        body {
+            overflow: hidden;
+        }
+
+        #msger_input {
+            border: 1px solid #1e3685;
+        }
+    </style>
+    <link rel="stylesheet" href="{{ baseroute }}public/css/chatinput.css">
+{% endblock %}
+
+{% block content %}
+    <section class="msger">
+        <main class="msger-chat">
+
+        </main>
+        <form id="form" class="form my-1" style="display:flex;">
+            <input id="msger_input" type="text" placeholder="Сообщение" class="mx-1">
+            <button id="send_btn" type="submit" style="margin-right: 1rem;" class="px-1 btn btn--light">Отправить
+            </button>
+        </form>
+    </section>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        const conn = new WebSocket("ws://localhost:8090"), button = $("#send_btn"), text = $("#msger_input"),
+            chat = $(".msger-chat"),
+            msg = {responseId:{{ responseId }}, role: "{{ role }}", id:{{ id }}};
+        console.log(chat)
+    </script>
+    <script src="{{ baseroute }}public/js/index.js">
+    </script>
+{% endblock %}

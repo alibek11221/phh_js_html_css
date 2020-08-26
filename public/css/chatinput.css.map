@@ -1,0 +1,10 @@
+{
+  "version": 3,
+  "sourceRoot": "",
+  "sources": [
+    "chatinput.scss"
+  ],
+  "names": [],
+  "mappings": "AAUA;EACE;;;AAGF;EACE;EACA;EACA;EACA;EACA;;AAEA;EACE;;;AAIJ;EACE;EACA;EACA;EACA;EACA,OA5BiB;EA6BjB,QA7BiB;EA8BjB;EACA;EACA;EACA;EACA;EACA;;AAEA;EACE;;AAGF;EACE",
+  "file": "chatinput.css"
+}

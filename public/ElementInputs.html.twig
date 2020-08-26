@@ -1,0 +1,60 @@
+{% if subelements %}
+	<form class="form-input-line my-2 " id="sub_elements"
+		  style="display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));">
+		{% set count = 1 %}
+		{% for subelement in subelements %}
+			<label class="popup-reg__label" style="margin-bottom: 0;">
+				<span class="lts-2px font-weight-medium" style="margin-bottom: 0; font-size: 1em; ">{{ count }}</span>
+				<input type="text" max="{{ subelement.max }}"
+					   subelement= {{ subelement.id }} id="sub_{{ subelement.id }}"
+					   class="ballsTeacher"
+					   autocomplete="off" placeholder="0" required>
+			</label>
+			{% set count = count + 1 %}
+		{% endfor %}
+		<div class="prof-box__action">
+			<input type="submit" class="btn btn--light mx-2" value="Сохранить">
+		</div>
+	</form>
+	<script>
+		function setInputHandlers(id, particip) {
+			$('.ballsTeacher').each(function () {
+				let max = parseInt($(this).attr('max'));
+				$(this).inputFilter(function (value) {
+					console.log(parseInt(value));
+					return /^\d*$/.test(value) && (value === "" || (parseInt(value) <= max));
+				});
+			});
+			$('#sub_elements').on('submit', function (e) {
+				e.preventDefault();
+				let elements = {};
+				$('.ballsTeacher').each(function () {
+					elements = {...elements, [$(this).attr('subelement')]: $(this).val()};
+				});
+				$.ajax({
+					type: "POST",
+					url: `${baseUrl}/tests/save/${id}`,
+					data: {
+						user: particip,
+						elements: elements
+					}
+				}).fail((jqXHR, textStatus) => {
+					$(this).html(badModal(`Ошибка ${jqXHR.status} ${jqXHR.responseText}`)).after(() => $('#circle').css('visibility', 'visible'));
+					setTimeout(() => clearElems(), 1300);
+				}).done(res => {
+					$(this).html(okModal("Данные успешно сохранены")).after(() => {
+						$('#circle').css('position', 'relative').css('visibility', 'visible');
+						let elem = $(`#${particip}-${id}`);
+						let a = elem.html();
+						let c = a.trim().substring(0, 3);
+						elem.html(c + ` ${res}%`);
+						elem.removeClass('ready');
+						elem.addClass('done');
+					});
+					setTimeout(() => clearElems(particip), 1300);
+				});
+			});
+		}
+	</script>
+{% endif %}
+

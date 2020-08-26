@@ -1,0 +1,22 @@
+{% if particips %}
+    {% for particip in particips %}
+        <div class="accordion name my-1" id="accord_{{ particip.code }}">
+            <div class="accordion-name" id="block_{{ particip.code }}">
+                <p class="small font-weight-normal text-uppercase lts-2px"
+                   style="cursor: pointer;"><b>{{ particip.surname }} {{ particip.name }} {{ particip.secondname }}</b>
+                </p>
+            </div>
+            <div class="accordion-content" id="{{ particip.code }}">
+                {% if passed %}
+                    <div class="el-content my-2">
+                        {% include 'Blocks.html.twig' %}
+                    </div>
+                {% else %}
+                    <div class="el-content my-2">
+                        {% include 'ElementInputs.html.twig' %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+{% endif %}

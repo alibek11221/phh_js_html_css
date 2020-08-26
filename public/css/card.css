@@ -1,0 +1,27 @@
+.ballsTeacher {
+  border: 1px solid gainsboro !important;
+  min-width: 3rem !important;
+  min-height: 3rem !important;
+  width: 3rem !important;
+  height: 3rem !important;
+  text-align: center !important;
+  border-radius: 5px !important;
+  font-size: 150% !important;
+  margin: 10px 10px !important;
+}
+.ballsTeacher:focus {
+  border: 1px solid #7ac143 !important;
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.el-content {
+  align-content: center;
+  justify-content: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.center {
+  display: flex;
+}
+
+/*# sourceMappingURL=card.css.map */

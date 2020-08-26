@@ -1,0 +1,40 @@
+.chat-input-area {
+  position: relative;
+}
+
+.chat-input-area__input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.3);
+  border: none;
+  box-sizing: border-box;
+  padding: 16px calc(100px + 20px) 16px 16px;
+}
+
+.chat-input-area__input:focus {
+  outline: none;
+}
+
+.chat-input-area__submit-button {
+  position: absolute;
+  top: 0;
+  right: 16px;
+  bottom: 0;
+  width: 100px;
+  height: 100px;
+  background-color: transparent;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  border: none;
+  margin: auto;
+}
+
+.chat-input-area__submit-button:focus {
+  outline: none;
+}
+
+.chat-input-area__submit-button:hover {
+  cursor: pointer;
+}
+
+/*# sourceMappingURL=chatinput.css.map */

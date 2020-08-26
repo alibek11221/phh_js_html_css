@@ -1,0 +1,22 @@
+{% extends 'Layout.html.twig' %}
+
+{% block title %} Отклики {{ name }} {% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}
+
+{% block content %}
+    {% for response in responses %}
+        <div>
+            <h3>{{ response.position }} В {{ response.school }}</h3>
+            <p>{{ response.dop_info }}</p>
+            {% if response.is_accepted > 0 %}
+                <a href="/vacancy_responses/{{ response.id }}/dialog">Перейти к диалогу</a>
+            {% else %}
+                <small>ожидает ответа</small>
+            {% endif %}
+            <small>{{ response.response_day }}</small>
+        </div>
+    {% endfor %}
+{% endblock %}

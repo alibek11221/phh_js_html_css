@@ -1,0 +1,48 @@
+$site-padding: 16px;
+
+$avatar-size: 50px;
+$submit-icon-size: 100px;
+
+$user-text-color: #333333;
+$user-text-background: #edfbfb;
+$chatbot-text-color: #e4e3e3;
+$chatbot-text-background: linear-gradient(#5867fb, #3F51B5);
+// Chat input area
+.chat-input-area {
+  position: relative;
+}
+
+.chat-input-area__input {
+  width: 100%;
+  background: rgba(#fff, 0.3);
+  border: none;
+  box-sizing: border-box;
+  padding: $site-padding calc(#{$submit-icon-size} + 20px) $site-padding $site-padding;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.chat-input-area__submit-button {
+  position: absolute;
+  top: 0;
+  right: 16px;
+  bottom: 0;
+  width: $submit-icon-size;
+  height: $submit-icon-size;
+  background-color: transparent;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  border: none;
+  margin: auto;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}

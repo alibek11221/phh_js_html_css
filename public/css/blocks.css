@@ -1,0 +1,38 @@
+.parent {
+  padding: 3em;
+  display: grid;
+  font-size: 1em !important;
+  grid-gap: 2em;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+}
+.parent .brick {
+  padding: 2em;
+  border-radius: 0.3em;
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  border: none;
+  color: #ffffff;
+  font-weight: 100;
+  display: inline-block;
+  transition: all 0.3s ease 0s;
+}
+.parent .brick.razdel {
+  cursor: pointer;
+  background-color: #1e3685;
+}
+.parent .brick.razdel.early {
+  background-color: #101d47;
+  cursor: default;
+}
+.parent .brick.razdel.selected {
+  border: 1px solid #1e3685;
+  color: #1e3685;
+  background-color: #ffffff;
+  transform: scale(1.1);
+  cursor: default;
+}
+.parent .brick .test {
+  background-color: #007cc0;
+}
+
+/*# sourceMappingURL=blocks.css.map */

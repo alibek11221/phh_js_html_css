@@ -1,0 +1,52 @@
+{% extends 'Layout.html.twig' %}
+{% block title %}Вакансии {{ school.name }}{% endblock %}
+{% block stylesheets %}
+
+{% endblock %}
+{% block content %}
+    <div class="breadcrumbs">
+        <div class="container">
+            <ul>
+                <li><a href="index.php"><i class="icon icon-home "></i>Главная</a></li>
+                <li><span>Банк вакансий</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="inner">
+        <div class="container">
+            <h2>Банк вакансий</h2>
+            <div class="base">
+                <form class="form" style="margin-bottom: 0;">
+                    <div class="base-box">
+                        <div class="base-action">
+                            <button id="new_vacancy" style="border: 1px solid #12286f;">Создать вакансию</button>
+                            <div class="mx-2 w-full">
+                                На ваши вакансии отозвались <span id='vacancy_count'
+                                                                  style="margin:0;">0</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="base-box px-0 py-0">
+                        <div class="modal-overlay " id="new_vacancy_fon" style="z-index:20;">
+                            <div class="modal " id="new_vacancy_modal">
+
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <!----Результат(блоки с учителями)--------------->
+                <div class="rating-box mx-1 mt-1" id="schools_vacancies">
+                </div>
+                <!----Результат(блоки с учителями)--------------->
+                <div class="base-action" style="display: none;">
+                    <button><i class="icon icon-refresh "></i>Показать еще учителей</button>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+	<script src="{{ baseroute }}public/js/main.js"></script>
+	<script src="{{ baseroute }}public/js/DirectorsApi.js"></script>
+{% endblock %}

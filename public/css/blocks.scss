@@ -1,0 +1,46 @@
+$test: #007cc0;
+$early: #ce181e;
+$element: #7ac143;
+$default: #1e3685;
+
+.parent {
+  padding: 3em;
+  display: grid;
+  font-size: 1em !important;
+  grid-gap: 2em;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+
+  .brick {
+    padding: 2em;
+    border-radius: .3em;
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    border: none;
+    color: #ffffff;
+    font-weight: 100;
+    display: inline-block;
+    transition: all 0.3s ease 0s;
+
+    &.razdel {
+      cursor: pointer;
+      background-color: $default;
+
+      &.early {
+        background-color: darken($default, 15);
+        cursor: default;
+      }
+
+      &.selected {
+        border: 1px solid $default;
+        color: $default;
+        background-color: #ffffff;
+        transform: scale(1.1);
+        cursor: default;
+      }
+    }
+
+    .test {
+      background-color: $test;
+    }
+  }
+}

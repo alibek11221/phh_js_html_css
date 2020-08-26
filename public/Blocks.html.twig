@@ -1,0 +1,43 @@
+<link rel="stylesheet" href="{{ baseroute }}public/css/blocks.css">
+{% if test %}
+    <div class="parent">
+        <div id="test_{{ test.incoming.id }}" class="test">
+            {{ test.incoming.result }}%
+        </div>
+        {% set counter = 1 %}
+
+        {% for razdel in test.incoming.razdels %}
+            <div id="{{ test.particip }}-{{ razdel.id }}" razdel="{{ razdel.id }}" class="element ready">
+                <small>{{ counter }}</small>
+            </div>
+            {% set counter = counter + 1 %}
+        {% endfor %}
+
+        {% set counter = 1 %}
+        {% for razdel in test.razdels %}
+        {% endfor %}
+        {% for element in test.incoming.elements %}
+            {% if element.enable and not element.done %}
+                {% set classlist = 'ready' %}
+            {% else %}
+                {% set classlist = 'early' %}
+            {% endif %}
+            {% if element.done or element.passed %}
+                {% set classlist = 'done' %}
+            {% endif %}
+            <div id="{{ test.particip }}-{{ element.id }}" element="{{ element.id }}"
+                 class="element {{ classlist }}">
+                {% if not element.done %}
+                    {{ counter }} - {{ element.result }}%
+                {% else %}
+                    {{ counter }}
+                {% endif %}
+            </div>
+            {% set counter = counter + 1 %}
+        {% endfor %}
+        <div id="test_{{ test.out.id }}" class="test">
+            {{ test.out.result }}%
+        </div>
+    </div>
+{% endif %}
+

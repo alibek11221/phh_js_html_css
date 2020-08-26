@@ -1,0 +1,12 @@
+<link rel="stylesheet" href="{{ baseroute }}public/css/blocks.css">
+{% if razdels %}
+    {% set counter = 1 %}
+    {% for razdel in razdels %}
+        <div id="{{ testid }}-{{ razdel.id }}" razdel="{{ razdel.id }}"
+             class="brick razdel {% if razdel.enable %} current hvr-grow-shadow {% else %} early {% endif %}"
+             passed="{% if razdel.passed %}1{% else %}0{% endif %}">
+            <small>{{ counter }}</small>
+        </div>
+        {% set counter = counter + 1 %}
+    {% endfor %}
+{% endif %}

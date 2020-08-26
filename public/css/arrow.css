@@ -1,0 +1,39 @@
+.link {
+  position: relative;
+  display: block;
+  padding: 1em 30px 1em 1em;
+}
+.link:after, .link:before {
+  content: "";
+  display: block;
+  position: absolute;
+  transition: all 0.5s ease-in-out;
+}
+.link:before {
+  top: 50%;
+  right: 10px;
+  width: 10px;
+  height: 10px;
+  transform-origin: 50% 50%;
+  transform: translate(0, -5px) rotate(45deg);
+  box-shadow: inset -1px 1px 0 0 #2196fe;
+  border-radius: 0 1.5px 0 0;
+}
+.link:after {
+  top: 50%;
+  right: 1em;
+  width: 13px;
+  height: 1px;
+  transform: translate(0, -0.5px);
+  background-color: #2196fe;
+}
+.link:hover:before {
+  box-shadow: inset -1px 1px 0 0 #536dfe;
+  transform: translate(0.5em, -5px) rotate(225deg);
+}
+.link:hover:after {
+  background-color: #536dfe;
+  transform: translate(20px, -0.5px);
+}
+
+/*# sourceMappingURL=arrow.css.map */
