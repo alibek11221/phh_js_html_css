@@ -1,6 +1,6 @@
 $test: #007cc0;
-$early: #ce181e;
-$element: #7ac143;
+$bad: #ce181e;
+$good: #7ac143;
 $default: #1e3685;
 
 .parent {
@@ -8,39 +8,68 @@ $default: #1e3685;
   display: grid;
   font-size: 1em !important;
   grid-gap: 2em;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(100px, 0.5fr));
 
-  .brick {
-    padding: 2em;
-    border-radius: .3em;
-    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.2);
-    text-align: center;
-    border: none;
-    color: #ffffff;
-    font-weight: 100;
-    display: inline-block;
-    transition: all 0.3s ease 0s;
+}
 
-    &.razdel {
-      cursor: pointer;
-      background-color: $default;
+.brick {
+  padding: 2em;
+  border-radius: .3em;
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.2);
+  text-align: center;
+  border: none;
+  color: #ffffff;
+  font-weight: 100;
+  display: inline-block;
+  transition: all 0.3s ease 0s;
 
-      &.early {
-        background-color: darken($default, 15);
-        cursor: default;
-      }
+  &.result {
+    cursor: default;
+    padding: 1rem 4rem;
 
-      &.selected {
-        border: 1px solid $default;
-        color: $default;
-        background-color: #ffffff;
-        transform: scale(1.1);
-        cursor: default;
-      }
+    &.good {
+      background-color: $good;
     }
 
-    .test {
-      background-color: $test;
+    &.bad {
+      background-color: $bad;
     }
   }
+
+  &.razdel {
+    cursor: pointer;
+    background-color: $default;
+
+    &.early {
+      background-color: darken($default, 15);
+      cursor: default;
+    }
+
+    &.selected {
+      transform: translateY(-8px);
+      cursor: default;
+    }
+  }
+
+  &.test {
+    background-color: $test;
+  }
+}
+
+.flex-evenly-center {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.send-button {
+  padding: 1rem 2rem;
+  background: #1e3685;
+  border: none;
+  outline: none;
+  color: #fff;
+  cursor: pointer;
+  margin-top: 0.8rem;
+  border-radius: .3rem;
 }

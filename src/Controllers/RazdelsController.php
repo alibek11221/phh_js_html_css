@@ -13,15 +13,11 @@ class RazdelsController extends AbstractController
      * @var ResurRazdelsRepos
      */
     private $razdelsRepos;
-    /**
-     * @var RazdelService
-     */
-    private $razdelService;
+
 
     public function __construct(ResurRazdelsRepos $razdelsRepos, RazdelService $razdelService)
     {
         $this->razdelsRepos = $razdelsRepos;
-        $this->razdelService = $razdelService;
     }
 
     public function getByTest(int $testId): string
@@ -42,4 +38,5 @@ class RazdelsController extends AbstractController
         unset($razdel);
         return $this->render('Razdels.html.twig', ['razdels' => $razdels, 'testid' => $testId]);
     }
+
 }

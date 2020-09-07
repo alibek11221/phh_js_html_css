@@ -51,10 +51,10 @@ class VacancyRepository extends AbstractRepository
                                  JOIN %s sch ON v.schoolid = sch.id
                                  JOIN %s st ON v.staj_id = st.id",
                 $this::getTableName(),
-                PositionRepository::getTableName(),
-                AreaRepository::getTableName(),
-                SchoolRepository::getTableName(),
-                ExperienceRepository::getTableName()
+                TableNames::POSITION,
+                TableNames::AREA,
+                TableNames::SCHOOL,
+                TableNames::EXPERIENCE
         );
         if ($areaCode !== 0) {
             $cond = "v.areacode = {$areaCode}";
@@ -133,8 +133,8 @@ class VacancyRepository extends AbstractRepository
                                  JOIN %s s on v.staj_id = s.id
                         WHERE schoolid = :schoolId",
                         $this::getTableName(),
-                        PositionRepository::getTableName(),
-                        ExperienceRepository::getTableName()
+                        TableNames::POSITION,
+                        TableNames::EXPERIENCE
                 )
         );
         $stmt->execute([':schoolId' => $schoolId]);
@@ -230,8 +230,8 @@ class VacancyRepository extends AbstractRepository
                                     JOIN %s s ON v.staj_id = s.id
                                     WHERE v.id = :id",
                         $this::getTableName(),
-                        PositionRepository::getTableName(),
-                        ExperienceRepository::getTableName()
+                        TableNames::POSITION,
+                        TableNames::EXPERIENCE
                 )
         );
         $stmt->execute([':id' => $id]);

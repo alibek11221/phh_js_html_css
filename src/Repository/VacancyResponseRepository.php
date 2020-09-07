@@ -53,10 +53,10 @@ class VacancyResponseRepository extends AbstractRepository
                                  LEFT OUTER JOIN %s q ON q.id = pd.qualificationid
                         WHERE vacancy_id = :id",
                 $this::getTableName(),
-                ParticipantDirectorRepository::getTableName(),
-                AreaRepository::getTableName(),
-                ExperienceRepository::getTableName(),
-                QualificationRepository::getTableName()
+                TableNames::PARTICIPANT_DIRECTOR,
+                TableNames::AREA,
+                TableNames::EXPERIENCE,
+                TableNames::QUALIFICATION
         );
         $stmt = $this->dbo->prepare($query);
         $stmt->execute(['id' => $vacancyId]);
@@ -126,10 +126,10 @@ class VacancyResponseRepository extends AbstractRepository
                         JOIN %s sch on v.schoolid = sch.id
                         WHERE user_id = :id",
                         self::getTableName(),
-                        VacancyRepository::getTableName(),
-                        PositionRepository::getTableName(),
-                        ExperienceRepository::getTableName(),
-                        SchoolRepository::getTableName()
+                        TableNames::VACANCY,
+                        TableNames::POSITION,
+                        TableNames::EXPERIENCE,
+                        TableNames::SCHOOL
                 )
         );
         $stmt->execute(['id' => $userId]);

@@ -14,22 +14,7 @@ const getSubElements = async (razdelId) => {
     const {data} = await axios.get(`${baseUrl}/sub_elements?razdel=${razdelId}`);
     return data;
 };
-(function ($) {
-    $.fn.inputFilter = function (inputFilter) {
-        return this.on("input keydown keyup mousedown mouseup select contextmenu drop", function () {
-            if (inputFilter(this.value)) {
-                this.oldValue = this.value;
-                this.oldSelectionStart = this.selectionStart;
-                this.oldSelectionEnd = this.selectionEnd;
-            } else if (this.hasOwnProperty("oldValue")) {
-                this.value = this.oldValue;
-                this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
-            } else {
-                this.value = "";
-            }
-        });
-    };
-}(jQuery));
+
 
 const getTest = async (yearId, subjectCode, particip) => {
     const {data} = await axios.get(`${baseUrl}/tests/get_by_selection?year=${yearId}&subject=${subjectCode}&particip=${particip}`);

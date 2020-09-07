@@ -6,6 +6,7 @@ namespace App\Core;
 
 use App\Controllers\IndexController;
 use App\Controllers\RazdelsController;
+use App\Controllers\RsurIntermediateTestsController;
 use App\Controllers\RsurParticipantsController;
 use App\Controllers\RsurSubElementsController;
 use App\Controllers\RsurTestController;
@@ -66,9 +67,9 @@ class Routes
                      * @see IndexController::director()
                      */
                     SimpleRouter::get(
-                        '/director',
-                        'IndexController@director',
-                        ['middleware' => DirectorAuthMiddleWare::class]
+                            '/director',
+                            'IndexController@director',
+                            ['middleware' => DirectorAuthMiddleWare::class]
                     )->name('director');
 
                     /**
@@ -84,9 +85,9 @@ class Routes
                      * @see VacancyResponseController::getDialog()
                      */
                     SimpleRouter::get(
-                        self::VACANCY_RESPONSE_ROUTE.'/{responseid}/dialog',
-                        'VacancyResponseController@getDialog',
-                        ['middleware' => AuthMiddleware::class]
+                            self::VACANCY_RESPONSE_ROUTE . '/{responseid}/dialog',
+                            'VacancyResponseController@getDialog',
+                            ['middleware' => AuthMiddleware::class]
                     )->where(['responseid' => '[0-9]+']);
 
                     /**
@@ -105,8 +106,6 @@ class Routes
                     SimpleRouter::get(self::NOT_FOUND, 'IndexController@notFound');
 
 
-
-
                     /**
                      * @see IndexController::card
                      */
@@ -120,31 +119,17 @@ class Routes
                             'RsurParticipantsController@getParticipantsWithBadGradesByTest'
                     );
 
-                    SimpleRouter::partialGroup(
-                            self::TESTS_ROUTE,
-                            static function () {
-                                /**
-                                 * @see RsurTestController::getTestsAndElements()
-                                 */
-                                SimpleRouter::get('/get_by_selection', 'RsurTestController@getTestsAndElements');
-                                /**
-                                 * @see SubTestController::saveResult()
-                                 */
-                                SimpleRouter::post('/save/{id}', 'SubTestController@saveResult')->where(
-                                        ['id' => '[0-9]+']
-                                );
-                            }
-                    );
-                    /**
-                     * @see RsurSubElementsController::getSubelementsByElement()
-                     */
-                    SimpleRouter::get('/sub_elements', 'RsurSubElementsController@getSubelementsByElement');
                     /**
                      * @see RazdelsController::getByTest()
                      */
                     SimpleRouter::get('/razdels/{testid}', 'RazdelsController@getByTest')->where(
                             ['testid' => '[0-9]+']
                     );
+
+                    /**
+                     * @see RsurIntermediateTestsController::saveResult()
+                     */
+                    SimpleRouter::post('/intermediate/save', 'RsurIntermediateTestsController@saveResult');
                 }
         );
     }
@@ -295,7 +280,6 @@ class Routes
                             'VacancyResponseController@accept',
                             ['middleware' => AuthMiddleware::class]
                     )->where(['resposneId' => '[0-9]+']);
-
                 }
         );
     }

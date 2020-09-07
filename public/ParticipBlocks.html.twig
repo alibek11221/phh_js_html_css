@@ -6,7 +6,7 @@
                    style="cursor: pointer;"><b>{{ particip.surname }} {{ particip.name }} {{ particip.secondname }}</b>
                 </p>
             </div>
-            <div class="accordion-content" id="{{ particip.code }}">
+            <div class="accordion-content" id="contetnt_{{ particip.code }}">
                 {% if passed %}
                     <div class="el-content my-2">
                         {% include 'Blocks.html.twig' %}

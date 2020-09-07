@@ -1,60 +1,35 @@
-{% if subelements %}
-	<form class="form-input-line my-2 " id="sub_elements"
-		  style="display: grid; grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));">
-		{% set count = 1 %}
-		{% for subelement in subelements %}
-			<label class="popup-reg__label" style="margin-bottom: 0;">
-				<span class="lts-2px font-weight-medium" style="margin-bottom: 0; font-size: 1em; ">{{ count }}</span>
-				<input type="text" max="{{ subelement.max }}"
-					   subelement= {{ subelement.id }} id="sub_{{ subelement.id }}"
-					   class="ballsTeacher"
-					   autocomplete="off" placeholder="0" required>
-			</label>
-			{% set count = count + 1 %}
-		{% endfor %}
-		<div class="prof-box__action">
-			<input type="submit" class="btn btn--light mx-2" value="Сохранить">
-		</div>
-	</form>
-	<script>
-		function setInputHandlers(id, particip) {
-			$('.ballsTeacher').each(function () {
-				let max = parseInt($(this).attr('max'));
-				$(this).inputFilter(function (value) {
-					console.log(parseInt(value));
-					return /^\d*$/.test(value) && (value === "" || (parseInt(value) <= max));
-				});
-			});
-			$('#sub_elements').on('submit', function (e) {
-				e.preventDefault();
-				let elements = {};
-				$('.ballsTeacher').each(function () {
-					elements = {...elements, [$(this).attr('subelement')]: $(this).val()};
-				});
-				$.ajax({
-					type: "POST",
-					url: `${baseUrl}/tests/save/${id}`,
-					data: {
-						user: particip,
-						elements: elements
-					}
-				}).fail((jqXHR, textStatus) => {
-					$(this).html(badModal(`Ошибка ${jqXHR.status} ${jqXHR.responseText}`)).after(() => $('#circle').css('visibility', 'visible'));
-					setTimeout(() => clearElems(), 1300);
-				}).done(res => {
-					$(this).html(okModal("Данные успешно сохранены")).after(() => {
-						$('#circle').css('position', 'relative').css('visibility', 'visible');
-						let elem = $(`#${particip}-${id}`);
-						let a = elem.html();
-						let c = a.trim().substring(0, 3);
-						elem.html(c + ` ${res}%`);
-						elem.removeClass('ready');
-						elem.addClass('done');
-					});
-					setTimeout(() => clearElems(particip), 1300);
-				});
-			});
-		}
-	</script>
+{% if elements %}
+    <form id="{{ particip.code }}_form" class="mx-1 flex-evenly-center sub_elements" particip="{{ particip.code }}">
+        <p class="lts-2px text-uppercase mb-1" style="color: #7ac143;display: none; flex: 1 1 100%;" id="message"></p>
+        {% set count = 1 %}
+        {% for element in elements %}
+            <div class="element-block" style="display:flex;" element="{{ element.id }}">
+                {% for subelement in element.subelements %}
+                    <div style="display: flex; flex-direction: column; align-items: center">
+                        <label for="sub_{{ subelement.id }}" style="width: 30px">{{ count }}</label>
+                        <input type="text" max="{{ subelement.max }}"
+                               subelement= {{ subelement.id }} element="{{ subelement.element_id }}"
+                               id="sub_{{ subelement.id }}"
+
+                                {% if particip.results %}
+                                    {% for result in particip.results %}
+                                        {% if result.sub_element_id == subelement.id %}
+                                            value="{{ result.mark }}"
+                                        {% endif %}
+                                    {% endfor %}
+                                    disabled
+                                    class="ballsTeacher saved"
+                                {% else %}
+                                    class="ballsTeacher"
+                                {% endif %}
+                               autocomplete="off" required>
+                    </div>
+                    {% set count = count + 1 %}
+                {% endfor %}
+            </div>
+        {% endfor %}
+        <input type="submit" class="send-button hvr-glow" {% if particip.results %} value="Изменить" res="1" {% else %}
+            value="Сохранить" res="0" {% endif %}>
+    </form>
 {% endif %}
 

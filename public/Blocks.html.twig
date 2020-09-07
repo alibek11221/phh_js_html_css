@@ -1,43 +1,38 @@
-<link rel="stylesheet" href="{{ baseroute }}public/css/blocks.css">
-{% if test %}
-    <div class="parent">
-        <div id="test_{{ test.incoming.id }}" class="test">
-            {{ test.incoming.result }}%
-        </div>
-        {% set counter = 1 %}
-
-        {% for razdel in test.incoming.razdels %}
-            <div id="{{ test.particip }}-{{ razdel.id }}" razdel="{{ razdel.id }}" class="element ready">
-                <small>{{ counter }}</small>
-            </div>
-            {% set counter = counter + 1 %}
-        {% endfor %}
-
-        {% set counter = 1 %}
-        {% for razdel in test.razdels %}
-        {% endfor %}
-        {% for element in test.incoming.elements %}
-            {% if element.enable and not element.done %}
-                {% set classlist = 'ready' %}
+{% if particip.results %}
+    <div class="flex-evenly-center" style="">
+        <h1 class="lts-2px text-uppercase mb-1"
+            style="{% if particip.results.razdel.grade > 2 %} color: #7ac143; {% else %} color: #ff1f5a; {% endif %} flex: 1 1 100%;">
+            {% if particip.results.razdel.grade > 2 %}
+                Зачет
             {% else %}
-                {% set classlist = 'early' %}
+                Незачет
             {% endif %}
-            {% if element.done or element.passed %}
-                {% set classlist = 'done' %}
-            {% endif %}
-            <div id="{{ test.particip }}-{{ element.id }}" element="{{ element.id }}"
-                 class="element {{ classlist }}">
-                {% if not element.done %}
-                    {{ counter }} - {{ element.result }}%
-                {% else %}
-                    {{ counter }}
-                {% endif %}
+        </h1>
+        {% for elementresult in particip.results.elements %}
+            <div class="brick result {% if elementresult.grade > 2 %} good {% else %} bad {% endif %}">
+                <p class="lts-2px text-uppercase font-weight-normal" style="font-size: 1rem;">
+                    {% if elementresult.grade > 2 %}
+                        Зачет
+                    {% else %}
+                        Незачет
+                    {% endif %}
+                </p>
             </div>
-            {% set counter = counter + 1 %}
         {% endfor %}
-        <div id="test_{{ test.out.id }}" class="test">
-            {{ test.out.result }}%
-        </div>
+    </div>
+{% else %}
+    <div class="flex-evenly-center" style="">
+        <p class="lts-2px text-uppercase mb-1"
+           style=" color: #ff1f5a;  flex: 1 1 100%;">
+            Нет данных
+        </p>
+        {% for elementresult in particip.results.elements %}
+            <div class="brick result  bad ">
+                <p class="lts-2px text-uppercase font-weight-normal" style="font-size: 1rem;">
+                    Нет данных
+                </p>
+            </div>
+        {% endfor %}
     </div>
 {% endif %}
 

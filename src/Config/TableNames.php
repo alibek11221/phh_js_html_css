@@ -25,8 +25,9 @@ class TableNames
             'participants' => 'rsur_particips',
             'tests_type' => 'rsur_tests_type',
             'sub_elements' => 'rsur_sub_elements',
-            'sub_generated_test' => 'rsur_sub_generated_test',
-            'sub_results' => 'rsur_sub_results',
+            'intermediate_subelements' => 'rsur_intermediate_sub_element_results',
+            'intermediate_elements' => 'rsur_intermediate_element_results',
+            'intermediate_tests' => 'rsur_intermediate_test_results',
             'years' => 'rsur_years'
     ];
 }

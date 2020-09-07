@@ -14,8 +14,11 @@ class RsurSubElementsRepository extends AbstractRepository
 
     public function findSubElementsByElementId(int $elementId): array
     {
-        $sql = sprintf('SELECT * FROM %s WHERE element_id = :elementid', $this::getTableName());
-        return $this->getAll($sql, ['elementid' => $elementId]);
+        $sql = sprintf(
+                'SELECT * FROM  %s WHERE element_id = :element',
+                $this::getTableName()
+        );
+        return $this->getMany($sql, ['element' => $elementId]);
     }
 
     public static function getTableName(): string
@@ -34,15 +37,8 @@ class RsurSubElementsRepository extends AbstractRepository
                 RsurElementsRepository::getTableName(),
                 ResurRazdelsRepos::getTableName()
         );
-        return $this->getAll($sql, ['razdel' => $razdel]);
+        return $this->getMany($sql, ['razdel' => $razdel]);
     }
 
-    public function getMinsAndMaxs(int $elementId): array
-    {
-        $sql = sprintf('SELECT id, procent, max FROM %s WHERE element_id = :elementid', $this::getTableName());
-        $stmt = $this->dbo->prepare($sql);
-        $stmt->execute(['elementid' => $elementId]);
-        return $stmt->fetchAll();
-    }
 
 }

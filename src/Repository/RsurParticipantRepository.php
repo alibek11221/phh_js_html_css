@@ -43,12 +43,12 @@ class RsurParticipantRepository extends AbstractRepository
                   AND rt.actual = %d
                   AND rp.actualcode = %d",
                 $this::getTableName(),
-                RsurResultsRepository::getTableName(),
-                RsurTestsRepository::getTableName(),
+                TableNames::RSUR['results'],
+                TableNames::RSUR['tests'],
                 StoredDataTypes::IS_ACTUAL,
                 StoredDataTypes::IS_ACTUAL
         );
-        $particips = $this->getAll($sql, ['schoolid' => $schoolId, 'testid' => $testId]);
+        $particips = $this->getMany($sql, ['schoolid' => $schoolId, 'testid' => $testId]);
         $output = [];
         foreach ($particips as $particip) {
             if ($this->razdelService->GetGrade($razdelId, (int)$particip['code']) === 2) {

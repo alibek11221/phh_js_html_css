@@ -4,23 +4,17 @@
 namespace App\Services;
 
 
-use App\Repository\ResurRazdelsRepos;
 use App\Repository\RsurElementsRepository;
 
 class RazdelService
 {
     /**
-     * @var ResurRazdelsRepos
-     */
-    private $razdelsRepos;
-    /**
      * @var RsurElementsRepository
      */
     private $elementsRepository;
 
-    public function __construct(ResurRazdelsRepos $razdelsRepos, RsurElementsRepository $elementsRepository)
+    public function __construct(RsurElementsRepository $elementsRepository)
     {
-        $this->razdelsRepos = $razdelsRepos;
         $this->elementsRepository = $elementsRepository;
     }
 

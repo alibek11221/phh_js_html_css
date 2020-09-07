@@ -125,10 +125,17 @@ abstract class AbstractRepository
         return [];
     }
 
-    protected function getAll(string $sql, array $params): array
+    protected function getMany(string $sql, array $params): array
     {
         $stmt = $this->dbo->prepare($sql);
         $stmt->execute($params);
         return $stmt->fetchAll();
+    }
+
+    protected function executeQuerry(string $sql, array $params): string
+    {
+        $stmt = $this->dbo->prepare($sql);
+        $stmt->execute($params);
+        return $this->dbo->lastInsertId();
     }
 }

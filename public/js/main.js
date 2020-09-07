@@ -3177,48 +3177,20 @@ function questionNext(questionActive) {
     step = parseInt(step) + 1;
     $('.testing-iteration-step').html(step);
 }
+(function ($) {
+    $.fn.inputFilter = function (inputFilter) {
+        return this.on("input keydown keyup mousedown mouseup select contextmenu drop", function () {
+            if (inputFilter(this.value)) {
+                this.oldValue = this.value;
+                this.oldSelectionStart = this.selectionStart;
+                this.oldSelectionEnd = this.selectionEnd;
+            } else if (this.hasOwnProperty("oldValue")) {
+                this.value = this.oldValue;
+                this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+            } else {
+                this.value = "";
+            }
+        });
+    };
+}(jQuery));
 
-
-// <script>
-// <!--        $("document").ready(function () {-->
-// <!--            function ajax_go() {-->
-// <!--                alert("Функция");-->
-// <!--            }-->
-// <!--            var del = $(this).attr("id_del");-->
-// <!--            $.ajax({-->
-//     <!--                url: "../include/dop_vakansiya.php",-->
-// <!--                type: "POST",-->
-// <!--                data: {del: 'no', del_no: "no"},-->
-// <!--                dataType: "json",-->
-// <!--                success: function (data) {-->
-// <!--                    $("#result_vacancy").html("");-->
-// <!--                    $("#js").html("");-->
-// <!--                    $.each(data.vacancy, function (key, val) {-->
-// <!--                        $("#dop_info").val("");-->
-// <!--                        ("#result_vacancy").append(' <div class="my-2 mx-auto p-relative bg-white shadow-1 blue-hover" style="width: 360px; overflow: hidden; border-radius: 1px;">	  <div class="px-2 py-2">	<p class="mb-0 small font-weight-medium text-uppercase mb-1 text-muted lts-2px" user_data="' + val.id + '">	' + val.date_insert + '	</p>	<h1 class="ff-serif font-weight-normal text-black card-heading mt-0 mb-1" style="line-height: 1.25;" user_doljnost="' + val.id + '"> ' + val.doljnost + '	</h1>	<p class="mb-1"> <b>Район</b>: <span user_areas="' + val.id + '">' + val.areaname + '</span>	</p>	<p class="mb-1"> <b>Школа</b>: <span user_schoolname="' + val.id + '">' + val.schoolname + '</span>	</p>	<p class="mb-1"> <b>Зарпалата</b>: <span user_zarplata="' + val.id + '">' + val.zp + '</span>  р. </p> 	<p class="mb-1"> 	  <b>Стаж работы</b>: <span user_staj="' + val.id + '">' + val.staj + '</span> года 	</p> <p class="mb-0"> 	  <b>Доп-ая информация</b>: <span user_text="' + val.id + '">' + val.dopinfo + '</span>   	</p>   </div> 	  <a href="#0" id_vac="' + val.id + '" class="open_modal text-uppercase d-inline-block font-weight-medium lts-2px ml-2 mb-2 text-center styled-link">Подробнее</a>  </div>');-->
-// <!--                    });-->
-// <!--                    $.each(data.js, function (key, val) {-->
-// <!--                        $("#js").html(val.js);-->
-// <!--                    });-->
-// <!--                    $("#block_schools").html('<select id="name_schools"> <option value="" selected>Выберите должность</option>');-->
-// <!--                    $.each(data.mas_schools, function (key, val) {-->
-// <!--                        $("#name_schools").append('<option class="op" areacode="' + val.Code + '" value="' + val.id + '">' + val.name + '</option>');-->
-// <!--                    });-->
-// <!--                    $("#block_schools").append('</select>');-->
-// <!--                    $("#base_areas").change(function () {-->
-// <!--                        var area = $(this).val();-->
-// <!--                        if (area != 0) {-->
-// <!--                            $(".op").hide();-->
-// <!--                            $(".op[areacode='" + area + "']").show();-->
-// <!--                        } else {-->
-// <!--                            $(".op").show();-->
-// <!--                        }-->
-// <!--                    });-->
-// <!--                    $("#base_areas,#name_schools").change(function () {-->
-// <!--                        ajax_go();-->
-// <!--                    });-->
-// <!--                });-->
-// <!--            $("#base_dolj").change(function () {-->
-// <!--                alert();-->
-// <!--            });-->
-//

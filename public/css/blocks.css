@@ -3,9 +3,10 @@
   display: grid;
   font-size: 1em !important;
   grid-gap: 2em;
-  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(100px, 0.5fr));
 }
-.parent .brick {
+
+.brick {
   padding: 2em;
   border-radius: 0.3em;
   box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.2);
@@ -16,23 +17,48 @@
   display: inline-block;
   transition: all 0.3s ease 0s;
 }
-.parent .brick.razdel {
+.brick.result {
+  cursor: default;
+  padding: 1rem 4rem;
+}
+.brick.result.good {
+  background-color: #7ac143;
+}
+.brick.result.bad {
+  background-color: #ce181e;
+}
+.brick.razdel {
   cursor: pointer;
   background-color: #1e3685;
 }
-.parent .brick.razdel.early {
+.brick.razdel.early {
   background-color: #101d47;
   cursor: default;
 }
-.parent .brick.razdel.selected {
-  border: 1px solid #1e3685;
-  color: #1e3685;
-  background-color: #ffffff;
-  transform: scale(1.1);
+.brick.razdel.selected {
+  transform: translateY(-8px);
   cursor: default;
 }
-.parent .brick .test {
+.brick.test {
   background-color: #007cc0;
+}
+
+.flex-evenly-center {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.send-button {
+  padding: 1rem 2rem;
+  background: #1e3685;
+  border: none;
+  outline: none;
+  color: #fff;
+  cursor: pointer;
+  margin-top: 0.8rem;
+  border-radius: 0.3rem;
 }
 
 /*# sourceMappingURL=blocks.css.map */
