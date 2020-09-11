@@ -103,7 +103,7 @@ class RsurIntermediateSubElementResultsRepository extends AbstractRepository
         return TableNames::RSUR['intermediate_subelements'];
     }
 
-    public function getResults(int $participCode, int $testId, int $razdelId): array
+    public function getResults(int $participCode, int $razdelId, int $testId): array
     {
         $sql = sprintf(
                 'SELECT * FROM %s

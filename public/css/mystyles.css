@@ -231,6 +231,7 @@
     border-radius: 5px;
     background: var(--right-msg-bg);
 }
+
 .msg {
     display: flex;
     align-items: flex-end;

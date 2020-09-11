@@ -6,6 +6,10 @@
   grid-template-columns: repeat(auto-fit, minmax(100px, 0.5fr));
 }
 
+.accordion-name {
+  text-align: left;
+}
+
 .brick {
   padding: 2em;
   border-radius: 0.3em;
@@ -19,16 +23,17 @@
 }
 .brick.result {
   cursor: default;
-  padding: 1rem 4rem;
+  padding: 3rem 4rem;
 }
 .brick.result.good {
-  background-color: #7ac143;
+  background-color: #7ac142;
 }
 .brick.result.bad {
   background-color: #ce181e;
 }
 .brick.razdel {
   cursor: pointer;
+  padding: 3rem 7rem;
   background-color: #1e3685;
 }
 .brick.razdel.early {
@@ -57,8 +62,82 @@
   outline: none;
   color: #fff;
   cursor: pointer;
-  margin-top: 0.8rem;
+  margin-top: 1.2rem;
   border-radius: 0.3rem;
+}
+
+.accordion.name.good {
+  border: 1px solid #7ac142;
+}
+
+.accordion.name.bad {
+  border: 1px solid #ce181e;
+}
+
+.accordion.active .accordion-name.good {
+  color: #629d33;
+}
+
+.accordion.active .accordion-name.bad {
+  color: #a01317;
+}
+
+.accordion-name.good {
+  color: #7ac142;
+}
+
+.accordion-name.good:before {
+  background-color: #7ac142;
+}
+
+.accordion-name.good:hover {
+  color: #629d33;
+}
+
+.accordion-name.bad {
+  color: #ce181e;
+}
+
+.accordion-name.bad:before {
+  background-color: #ce181e;
+}
+
+.accordion-name.bad:hover {
+  color: #a01317;
+}
+
+@keyframes loader-animation {
+  0% {
+    width: 0%;
+  }
+  49% {
+    width: 100%;
+    left: 0%;
+  }
+  50% {
+    left: 100%;
+  }
+  100% {
+    left: 0%;
+    width: 100%;
+  }
+}
+
+.loader {
+  height: 3px;
+  width: 100%;
+  overflow: hidden;
+  display: none;
+}
+
+.loader .bar {
+  position: relative;
+  height: 5px;
+  background-color: #1e3685;
+  animation-name: loader-animation;
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
 }
 
 /*# sourceMappingURL=blocks.css.map */

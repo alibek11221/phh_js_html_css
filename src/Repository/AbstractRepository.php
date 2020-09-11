@@ -100,14 +100,14 @@ abstract class AbstractRepository
     {
         if ($this->isSoftDelete) {
             $sql = sprintf(
-                    'UPDATE %s SET %s = %s WHERE %s = :id',
+                    'UPDATE %s SET %s = %s WHERE %s = :primary',
                     static::getTableName(),
                     $this->actualColumn,
                     $this->primary,
                     $this->archiveValue
             );
         } else {
-            $sql = sprintf('DELETE FROM %s WHERE %s = :id', static::getTableName(), $this->primary);
+            $sql = sprintf('DELETE FROM %s WHERE %s = :primary', static::getTableName(), $this->primary);
         }
         $stmt = $this->dbo->prepare($sql);
         $stmt->execute(['primary' => $primary]);

@@ -8,6 +8,7 @@
   border-radius: 5px !important;
   font-size: 150% !important;
   margin: 10px 10px !important;
+  transition: all .4s;
 
   &:focus {
     border: 1px solid #7ac143 !important;
@@ -15,8 +16,9 @@
   }
 
   &.saved {
-    background: #7ac143;
+    background: darken(#7ac143, 16);
     color: #ffffff;
+    box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.2);
   }
 }
 

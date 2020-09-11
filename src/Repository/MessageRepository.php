@@ -58,7 +58,7 @@ class MessageRepository
      */
     public function setPath(string $path): MessageRepository
     {
-        $this->path = sprintf("%s/Data/Messages/%s.json", dirname(__DIR__, 2), $path);
+        $this->path = sprintf("%s/data/messages/%s.json", dirname(__DIR__, 2), $path);
         if (!file_exists($this->path)) {
             $file = fopen($this->path, 'wb');
             fclose($file);

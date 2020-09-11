@@ -8,14 +8,16 @@
   border-radius: 5px !important;
   font-size: 150% !important;
   margin: 10px 10px !important;
+  transition: all 0.4s;
 }
 .ballsTeacher:focus {
   border: 1px solid #7ac143 !important;
   box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.2);
 }
 .ballsTeacher.saved {
-  background: #7ac143;
+  background: #53862c;
   color: #ffffff;
+  box-shadow: 10px 10px 30px rgba(0, 0, 0, 0.2);
 }
 
 .el-content {

@@ -1,13 +1,5 @@
 {% if particip.results %}
-    <div class="flex-evenly-center" style="">
-        <h1 class="lts-2px text-uppercase mb-1"
-            style="{% if particip.results.razdel.grade > 2 %} color: #7ac143; {% else %} color: #ff1f5a; {% endif %} flex: 1 1 100%;">
-            {% if particip.results.razdel.grade > 2 %}
-                Зачет
-            {% else %}
-                Незачет
-            {% endif %}
-        </h1>
+    <div class="flex-evenly-center my-1" style="">
         {% for elementresult in particip.results.elements %}
             <div class="brick result {% if elementresult.grade > 2 %} good {% else %} bad {% endif %}">
                 <p class="lts-2px text-uppercase font-weight-normal" style="font-size: 1rem;">
@@ -21,7 +13,7 @@
         {% endfor %}
     </div>
 {% else %}
-    <div class="flex-evenly-center" style="">
+    <div class="flex-evenly-center my-1" style="">
         <p class="lts-2px text-uppercase mb-1"
            style=" color: #ff1f5a;  flex: 1 1 100%;">
             Нет данных

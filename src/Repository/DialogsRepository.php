@@ -6,19 +6,18 @@ namespace App\Repository;
 
 
 use App\Domain\Dialog;
-use App\Domain\DialogParticipant;
 use App\Domain\User;
 
 class DialogsRepository
 {
     /**
-     * @var string
-     */
-    private $path;
-    /**
      * @var array
      */
     public $rooms;
+    /**
+     * @var string
+     */
+    private $path;
 
     public function __construct()
     {

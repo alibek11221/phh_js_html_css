@@ -1,15 +1,14 @@
 {% if elements %}
-    <form id="{{ particip.code }}_form" class="mx-1 flex-evenly-center sub_elements" particip="{{ particip.code }}">
-        <p class="lts-2px text-uppercase mb-1" style="color: #7ac143;display: none; flex: 1 1 100%;" id="message"></p>
+	<form id="{{ particip.code }}_form" class="flex-evenly-center sub_elements" particip="{{ particip.code }}">
         {% set count = 1 %}
         {% for element in elements %}
-            <div class="element-block" style="display:flex;" element="{{ element.id }}">
+			<div class="element-block" style="display:flex;" element="{{ element.id }}">
                 {% for subelement in element.subelements %}
-                    <div style="display: flex; flex-direction: column; align-items: center">
-                        <label for="sub_{{ subelement.id }}" style="width: 30px">{{ count }}</label>
-                        <input type="text" max="{{ subelement.max }}"
-                               subelement= {{ subelement.id }} element="{{ subelement.element_id }}"
-                               id="sub_{{ subelement.id }}"
+					<div style="display: flex; flex-direction: column; align-items: center">
+						<label for="sub_{{ subelement.id }}" style="width: 30px">{{ count }}</label>
+						<input type="text" max="{{ subelement.max }}"
+						       subelement= {{ subelement.id }} element="{{ subelement.element_id }}"
+						       id="sub_{{ subelement.id }}"
 
                                 {% if particip.results %}
                                     {% for result in particip.results %}
@@ -18,18 +17,25 @@
                                         {% endif %}
                                     {% endfor %}
                                     disabled
-                                    class="ballsTeacher saved"
+	                                class="ballsTeacher saved"
                                 {% else %}
-                                    class="ballsTeacher"
+	                                class="ballsTeacher"
                                 {% endif %}
                                autocomplete="off" required>
-                    </div>
+					</div>
                     {% set count = count + 1 %}
                 {% endfor %}
-            </div>
+			</div>
         {% endfor %}
-        <input type="submit" class="send-button hvr-glow" {% if particip.results %} value="Изменить" res="1" {% else %}
-            value="Сохранить" res="0" {% endif %}>
-    </form>
+		<input type="submit"
+		       class="send-button hvr-grow ld-ext-right ld" {% if particip.results %} value="Изменить" res="1" {% else %}
+			res="0" {% endif %}>
+
+		<div id="looo" class="loader" style="margin-top: 3px">
+			<div class="bar"></div>
+		</div>
+		<p class="lts-2px text-uppercase mt-1" style="color: #7ac143;display: none; flex: 1 1 100%;" id="message">
+		</p>
+	</form>
 {% endif %}
 

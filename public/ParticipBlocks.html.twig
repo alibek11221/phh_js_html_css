@@ -1,20 +1,36 @@
 {% if particips %}
     {% for particip in particips %}
-        <div class="accordion name my-1" id="accord_{{ particip.code }}">
-            <div class="accordion-name" id="block_{{ particip.code }}">
+        {% set classlist = 'accordion-name' %}
+        {% set paretnclasslist = 'accordion name my-1 mx-1' %}
+        {% if particip.results and passed %}
+            {% if particip.results.razdel.grade > 2 %}
+                {% set classlist = 'accordion-name good' %}
+                {% set paretnclasslist = 'accordion name my-1 mx-1 good' %}
+            {% else %}
+                {% set classlist = 'accordion-name bad' %}
+                {% set paretnclasslist = 'accordion name my-1 mx-1 bad' %}
+            {% endif %}
+        {% endif %}
+        <div class="{{ paretnclasslist }}" id="accord_{{ particip.code }}">
+            <div class="{{ classlist }}" id="block_{{ particip.code }}">
                 <p class="small font-weight-normal text-uppercase lts-2px"
-                   style="cursor: pointer;"><b>{{ particip.surname }} {{ particip.name }} {{ particip.secondname }}</b>
+                   style="cursor: pointer;">
+                    {% if particip.results and passed %}
+                        {% if particip.results.razdel.grade > 2 %}
+                            <b>{{ particip.surname }} {{ particip.name }} {{ particip.secondname }} - Зачет</b>
+                        {% else %}
+                            <b>{{ particip.surname }} {{ particip.name }} {{ particip.secondname }} - Незачет</b>
+                        {% endif %}
+                    {% else %}
+                        <b>{{ particip.surname }} {{ particip.name }} {{ particip.secondname }}</b>
+                    {% endif %}
                 </p>
             </div>
-            <div class="accordion-content" id="contetnt_{{ particip.code }}">
+            <div class="accordion-content my-1" id="contetnt_{{ particip.code }}">
                 {% if passed %}
-                    <div class="el-content my-2">
-                        {% include 'Blocks.html.twig' %}
-                    </div>
+                    {% include 'Blocks.html.twig' %}
                 {% else %}
-                    <div class="el-content my-2">
-                        {% include 'ElementInputs.html.twig' %}
-                    </div>
+                    {% include 'ElementInputs.html.twig' %}
                 {% endif %}
             </div>
         </div>

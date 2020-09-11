@@ -68,6 +68,7 @@ class RsurParticipantsController extends AbstractController
                         $razdelId
                 );
             }
+            unset($particip);
         } else {
             foreach ($params['particips'] as &$particip) {
                 if ($this->intermediateSubElementResultsRepository->resultExists(
