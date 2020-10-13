@@ -14,6 +14,7 @@ class AuthMiddleware implements IMiddleware
 {
 
     use AuthenticatedUserDataTrait;
+
     /**
      * {@inheritDoc}
      */

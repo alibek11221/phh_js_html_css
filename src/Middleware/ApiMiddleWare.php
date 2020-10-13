@@ -4,7 +4,6 @@
 namespace App\Middleware;
 
 
-use App\Core\Routes;
 use Pecee\Http\Middleware\IMiddleware;
 use Pecee\Http\Request;
 use Pecee\SimpleRouter\SimpleRouter;

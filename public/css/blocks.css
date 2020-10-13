@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css?family=Roboto+Mono");
 .parent {
   padding: 3em;
   display: grid;
@@ -65,19 +66,15 @@
   margin-top: 1.2rem;
   border-radius: 0.3rem;
 }
-
 .accordion.name.good {
   border: 1px solid #7ac142;
 }
-
 .accordion.name.bad {
   border: 1px solid #ce181e;
 }
-
 .accordion.active .accordion-name.good {
   color: #629d33;
 }
-
 .accordion.active .accordion-name.bad {
   color: #a01317;
 }
@@ -85,23 +82,18 @@
 .accordion-name.good {
   color: #7ac142;
 }
-
 .accordion-name.good:before {
   background-color: #7ac142;
 }
-
 .accordion-name.good:hover {
   color: #629d33;
 }
-
 .accordion-name.bad {
   color: #ce181e;
 }
-
 .accordion-name.bad:before {
   background-color: #ce181e;
 }
-
 .accordion-name.bad:hover {
   color: #a01317;
 }
@@ -122,7 +114,6 @@
     width: 100%;
   }
 }
-
 .loader {
   height: 3px;
   width: 100%;
@@ -131,13 +122,63 @@
 }
 
 .loader .bar {
-  position: relative;
-  height: 5px;
-  background-color: #1e3685;
-  animation-name: loader-animation;
-  animation-duration: 3s;
-  animation-iteration-count: infinite;
-  animation-timing-function: ease-in-out;
+    position: relative;
+    height: 5px;
+    background-color: #1e3685;
+    animation-name: loader-animation;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+.card_container {
+    width: 300px;
+    height: 200px;
+    position: relative;
+    perspective: 800px;
+    border-radius: 4px;
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transform-style: preserve-3d;
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    border-radius: 6px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+}
+
+.card div {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border-radius: 6px;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font: 16px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-smoothing: antialiased;
+    color: #47525d;
+}
+
+.card div.good {
+    background-color: #7ac142;
+}
+
+.card div.bad {
+    background-color: #ce181e;
+}
+
+.card .back {
+    transform: rotateY(180deg);
+}
+
+.card.flipped {
+    transform: rotateY(180deg);
 }
 
 /*# sourceMappingURL=blocks.css.map */

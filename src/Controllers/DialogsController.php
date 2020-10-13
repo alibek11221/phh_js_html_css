@@ -6,8 +6,8 @@ namespace App\Controllers;
 
 use App\Domain\DialogParticipant;
 use App\Repository\DialogsRepository;
-use App\Repository\ParticipantDirectorRepository;
-use App\Repository\VacancyResponseRepository;
+use App\Repository\ParticipantDirectorBaseRepository;
+use App\Repository\VacancyResponseBaseRepository;
 use Pecee\SimpleRouter\SimpleRouter;
 
 class DialogsController extends AbstractController
@@ -17,19 +17,19 @@ class DialogsController extends AbstractController
      */
     private $dialogsRepository;
     /**
-     * @var ParticipantDirectorRepository
+     * @var ParticipantDirectorBaseRepository
      */
     private $participantDirectorRepository;
     /**
-     * @var VacancyResponseRepository
+     * @var VacancyResponseBaseRepository
      */
     private $vacancyResponseRepository;
 
 
     public function __construct(
             DialogsRepository $dialogsRepository,
-            ParticipantDirectorRepository $participantDirectorRepository,
-            VacancyResponseRepository $vacancyResponseRepository
+            ParticipantDirectorBaseRepository $participantDirectorRepository,
+            VacancyResponseBaseRepository $vacancyResponseRepository
     ) {
         $this->dialogsRepository = $dialogsRepository;
         $this->participantDirectorRepository = $participantDirectorRepository;

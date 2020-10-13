@@ -6,7 +6,7 @@ namespace App\Repository;
 
 use App\Config\TableNames;
 
-class RsurSubElementsRepository extends AbstractRepository
+class RsurSubElementsBaseRepository extends AbstractBaseRepository
 {
     protected $isSoftDelete = true;
     protected $actualValue = 1;
@@ -34,8 +34,8 @@ class RsurSubElementsRepository extends AbstractRepository
                 JOIN %s rr on re.razdel_id = rr.id
                 WHERE  razdel_id = :razdel',
                 $this::getTableName(),
-                RsurElementsRepository::getTableName(),
-                ResurRazdelsRepos::getTableName()
+                RsurElementseRepository::getTableName(),
+                RsurRazdelsRepos::getTableName()
         );
         return $this->getMany($sql, ['razdel' => $razdel]);
     }

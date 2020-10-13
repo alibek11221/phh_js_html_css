@@ -1,0 +1,110 @@
+@import "inc/variables";
+
+.my_accordion {
+  font-size: 1rem;
+  border-radius: 5px;
+}
+
+.my_accordion-header,
+.my_accordion-body {
+  background: white;
+}
+
+.my_accordion-header {
+  padding: 1.5em 1.5em;
+  background: #3F51B5;
+  color: white;
+  cursor: pointer;
+  letter-spacing: .1em;
+  transition: all .3s;
+  text-transform: uppercase;
+
+  &.good {
+    background: $good;
+  }
+
+  &.bad {
+    background: $bad;
+  }
+}
+
+.my_accordion__item {
+  border-bottom: 1px solid #3a4ba4;
+
+  &.good {
+    border-bottom: 1px solid darken($good, 10);
+  }
+
+  &.bad {
+    border-bottom: 1px solid darken($bad, 10);
+  }
+}
+
+.my_accordion__item .my_accordion__item {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.my_accordion-header:hover {
+  background: #2D3D99;
+  position: relative;
+  z-index: 5;
+
+  &.good {
+    background: darken($good, 10);
+  }
+
+  &.bad {
+    background: darken($bad, 10);
+  }
+}
+
+.my_accordion-body {
+  background: #fcfcfc;
+  color: #353535;
+  display: none;
+}
+
+.my_accordion-body__contents {
+  padding: 1.5em 1.5em;
+  font-size: .85em;
+}
+
+.my_accordion__item.active:last-child .my_accordion-header {
+  border-radius: 0;
+}
+
+.my_accordion:first-child > .my_accordion__item > .my_accordion-header {
+  border-bottom: 1px solid transparent;
+}
+
+.my_accordion__item > .my_accordion-header:after {
+  content: "\f3d0";
+  font-family: IonIcons;
+  font-size: 1.2em;
+  float: right;
+  position: relative;
+  top: -2px;
+  transition: .3s all;
+  transform: rotate(0deg);
+}
+
+.my_accordion__item.active > .my_accordion-header:after {
+  transform: rotate(-180deg);
+}
+
+.my_accordion__item.active .my_accordion-header {
+  background: #2D3D99;
+
+  &.good {
+    background: darken($good, 10);
+  }
+
+  &.bad {
+    background: darken($bad, 10);
+  }
+}
+
+.my_accordion__item .my_accordion__item .my_accordion-header {
+  background: #f1f1f1;
+  color: #ffffff;
+}

@@ -5,35 +5,35 @@ declare(strict_types=1);
 namespace App\Controllers;
 
 
-use App\Repository\ParticipantDirectorRepository;
-use App\Repository\VacancyRepository;
-use App\Repository\VacancyResponseRepository;
+use App\Repository\ParticipantDirectorBaseRepository;
+use App\Repository\VacancyBaseRepository;
+use App\Repository\VacancyResponseBaseRepository;
 use Pecee\Http\Response;
 use Pecee\SimpleRouter\SimpleRouter;
 
 class VacancyController extends AbstractController
 {
     /**
-     * @var VacancyRepository
+     * @var VacancyBaseRepository
      */
     private $vacancyRepository;
     /**
-     * @var VacancyResponseRepository
+     * @var VacancyResponseBaseRepository
      */
     private $vacancyResponseRepository;
     /**
-     * @var ParticipantDirectorRepository
+     * @var ParticipantDirectorBaseRepository
      */
 
 
     /**
      * VacancyController constructor.
-     * @param VacancyRepository $vacancyRepository
-     * @param VacancyResponseRepository $vacancyResponseRepository
+     * @param VacancyBaseRepository $vacancyRepository
+     * @param VacancyResponseBaseRepository $vacancyResponseRepository
      */
     public function __construct(
-            VacancyRepository $vacancyRepository,
-            VacancyResponseRepository $vacancyResponseRepository
+            VacancyBaseRepository $vacancyRepository,
+            VacancyResponseBaseRepository $vacancyResponseRepository
     ) {
         $this->vacancyRepository = $vacancyRepository;
         $this->vacancyResponseRepository = $vacancyResponseRepository;

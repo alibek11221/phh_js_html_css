@@ -1,20 +1,25 @@
 {% extends 'Layout.html.twig' %}
 
 {% block content %}
-	<form action="{{ baseroute }}" method="post" class="form mx-auto my-3 d-inline-block">
+	<form action="/" method="post" class="form mx-auto my-3 d-inline-block">
 		<label class="checkbox text-black">
 			<input id="director" class="staj"
-			       name="exp" type="radio" value="1"><span></span>Директор
+				   name="exp" type="radio" value="1"><span></span>Директор
 		</label>
 		<label class="checkbox text-black">
 			<input id="teacher" class="staj"
-			       name="exp"
-			       type="radio" value="2"><span></span>Учитель
+				   name="exp"
+				   type="radio" value="2"><span></span>Учитель
 		</label>
 		<label class="checkbox text-black">
 			<input id="teacher" class="staj"
 				   name="exp"
 				   type="radio" value="3"><span></span>Карта
+		</label>
+		<label class="checkbox text-black">
+			<input id="teacher" class="staj"
+				   name="exp"
+				   type="radio" value="4"><span></span>Учитель карта
 		</label>
 		<button id="send_btn" type="submit" style="margin-right: 1rem;" class="px-1 btn exit__btn">Войти</button>
 	</form>

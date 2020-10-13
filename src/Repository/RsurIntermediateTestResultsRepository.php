@@ -6,10 +6,10 @@ namespace App\Repository;
 
 use App\Config\TableNames;
 
-class RsurIntermediateTestResultsRepository extends AbstractRepository
+class RsurIntermediateTestResultsRepository extends AbstractBaseRepository
 {
 
-    public function saveResult(int $particip, int $razdel, array $grades, bool $exists, int $testId): void
+    public function saveResult(string $particip, int $razdel, array $grades, bool $exists, int $testId): void
     {
         $res = $this->getGrade($grades);
         if (!$exists) {
@@ -78,7 +78,7 @@ class RsurIntermediateTestResultsRepository extends AbstractRepository
         return TableNames::RSUR['intermediate_tests'];
     }
 
-    public function getResult(int $participCode, int $testId, int $razdelId): array
+    public function getResult(string $participCode, int $testId, int $razdelId): array
     {
         $sql = sprintf(
                 'SELECT * FROM %s
@@ -89,5 +89,17 @@ class RsurIntermediateTestResultsRepository extends AbstractRepository
         );
 
         return $this->getOne($sql, ['razdel' => $razdelId, 'test' => $testId, 'particip' => $participCode]);
+    }
+
+    public function getResultsForTeachrSide(string $participCode, int $testId, int $razdelId): array
+    {
+        $sql = sprintf(
+                'SELECT pure_percent, round_percent, grade, created_at, updated_at FROM %s
+                WHERE rsur_razdel_id = :razdel
+                AND rsur_particip_code = :particip
+                AND rsur_test_id = :test',
+                $this::getTableName()
+        );
+        return $this->getOne($sql, ['razdel' => $razdelId, 'particip' => $participCode, 'test' => $testId]);
     }
 }

@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Controllers;
 
 
-use App\Repository\SchoolRepository;
+use App\Repository\SchoolBaseRepository;
 use DI\Annotation\Injectable;
 use Pecee\Http\Response;
 
@@ -17,15 +17,15 @@ use Pecee\Http\Response;
 class SchoolController extends AbstractController
 {
     /**
-     * @var SchoolRepository
+     * @var SchoolBaseRepository
      */
     private $repository;
 
     /**
      * SchoolController constructor.
-     * @param SchoolRepository $repository
+     * @param SchoolBaseRepository $repository
      */
-    public function __construct(SchoolRepository $repository)
+    public function __construct(SchoolBaseRepository $repository)
     {
         $this->repository = $repository;
     }

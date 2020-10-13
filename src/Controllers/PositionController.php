@@ -5,21 +5,21 @@ declare(strict_types=1);
 namespace App\Controllers;
 
 
-use App\Repository\PositionRepository;
+use App\Repository\PositionBaseRepository;
 use Pecee\Http\Response;
 
 class PositionController extends AbstractController
 {
     /**
-     * @var PositionRepository
+     * @var PositionBaseRepository
      */
     private $repository;
 
     /**
      * PositionController constructor.
-     * @param PositionRepository $repository
+     * @param PositionBaseRepository $repository
      */
-    public function __construct(PositionRepository $repository)
+    public function __construct(PositionBaseRepository $repository)
     {
         $this->repository = $repository;
     }

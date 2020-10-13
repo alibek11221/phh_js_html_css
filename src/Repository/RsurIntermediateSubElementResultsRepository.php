@@ -8,7 +8,7 @@ use App\Config\TableNames;
 use App\Core\Dbo;
 use Exception;
 
-class RsurIntermediateSubElementResultsRepository extends AbstractRepository
+class RsurIntermediateSubElementResultsRepository extends AbstractBaseRepository
 {
     /**
      * @var RsurIntermediateElementResultsRepository

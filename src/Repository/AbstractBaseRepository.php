@@ -7,7 +7,7 @@ namespace App\Repository;
 
 use App\Core\Dbo;
 
-abstract class AbstractRepository
+abstract class AbstractBaseRepository
 {
     /**
      * @var Dbo
@@ -33,6 +33,7 @@ abstract class AbstractRepository
      * @var string
      */
     protected $archiveValue = '0';
+
     /**
      * AbstractRepository constructor.
      * @param Dbo $dbo
@@ -137,5 +138,15 @@ abstract class AbstractRepository
         $stmt = $this->dbo->prepare($sql);
         $stmt->execute($params);
         return $this->dbo->lastInsertId();
+    }
+
+    protected function getColumnValue(string $sql, array $params)
+    {
+        $stmt = $this->dbo->prepare($sql);
+        $stmt->execute($params);
+        if ($output = $stmt->fetchColumn()) {
+            return $output;
+        }
+        return null;
     }
 }

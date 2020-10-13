@@ -4,21 +4,21 @@
 namespace App\Controllers;
 
 
-use App\Repository\RsurElementsRepository;
+use App\Repository\RsurElementseRepository;
 use App\Repository\RsurIntermediateElementResultsRepository;
 use App\Repository\RsurIntermediateSubElementResultsRepository;
 use App\Repository\RsurIntermediateTestResultsRepository;
-use App\Repository\RsurParticipantRepository;
+use App\Repository\RsurParticipantBaseRepository;
 
 class RsurParticipantsController extends AbstractController
 {
 
     /**
-     * @var RsurParticipantRepository
+     * @var RsurParticipantBaseRepository
      */
     private $participantRepository;
     /**
-     * @var RsurElementsRepository
+     * @var RsurElementseRepository
      */
     private $elementsRepository;
     /**
@@ -35,8 +35,8 @@ class RsurParticipantsController extends AbstractController
     private $intermediateElementResultsRepository;
 
     public function __construct(
-            RsurParticipantRepository $participantRepository,
-            RsurElementsRepository $elementsRepository,
+            RsurParticipantBaseRepository $participantRepository,
+            RsurElementseRepository $elementsRepository,
             RsurIntermediateSubElementResultsRepository $intermediateSubElementResultsRepository,
             RsurIntermediateTestResultsRepository $intermediateTestResultsRepository,
             RsurIntermediateElementResultsRepository $intermediateElementResultsRepository

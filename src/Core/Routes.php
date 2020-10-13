@@ -71,7 +71,6 @@ class Routes
                             'IndexController@director',
                             ['middleware' => DirectorAuthMiddleWare::class]
                     )->name('director');
-
                     /**
                      * @see VacancyResponseController::showUsersResponses()
                      */
@@ -80,7 +79,6 @@ class Routes
                             'VacancyResponseController@showUsersResponses',
                             ['middleware' => TeacherAuthMiddleWare::class]
                     );
-
                     /**
                      * @see VacancyResponseController::getDialog()
                      */
@@ -89,47 +87,43 @@ class Routes
                             'VacancyResponseController@getDialog',
                             ['middleware' => AuthMiddleware::class]
                     )->where(['responseid' => '[0-9]+']);
-
                     /**
                      * @see IndexController::index()
                      */
                     SimpleRouter::get('/', 'IndexController@index');
-
                     /**
                      * @see IndexController::login
                      */
                     SimpleRouter::post('/', 'IndexController@login');
-
                     /**
                      * @see IndexController::notFound
                      */
                     SimpleRouter::get(self::NOT_FOUND, 'IndexController@notFound');
-
-
                     /**
                      * @see IndexController::card
                      */
-                    SimpleRouter::get('/card', 'IndexController@card')->name('card');
-
+                    SimpleRouter::get('/rsur/card', 'IndexController@card')->name('rsur_card');
+                    /**
+                     * @see IndexController::teacherCard()
+                     */
+                    SimpleRouter::get('/rsur/teacher/card', 'IndexController@teacherCard')->name('rsur_teacher');
                     /**
                      * @see RsurParticipantsController::getParticipantsWithBadGradesByTest()
                      */
                     SimpleRouter::get(
-                            '/particips/{testid}',
+                            '/rsur/particips/{testid}',
                             'RsurParticipantsController@getParticipantsWithBadGradesByTest'
                     );
-
                     /**
                      * @see RazdelsController::getByTest()
                      */
-                    SimpleRouter::get('/razdels/{testid}', 'RazdelsController@getByTest')->where(
+                    SimpleRouter::get('/rsur/{testid}/razdels', 'RazdelsController@getByTest')->where(
                             ['testid' => '[0-9]+']
                     );
-
                     /**
                      * @see RsurIntermediateTestsController::saveResult()
                      */
-                    SimpleRouter::post('/intermediate/save', 'RsurIntermediateTestsController@saveResult');
+                    SimpleRouter::post('rsur/intermediate/save', 'RsurIntermediateTestsController@saveResult');
                 }
         );
     }

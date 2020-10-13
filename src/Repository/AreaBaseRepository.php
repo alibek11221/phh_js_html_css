@@ -12,7 +12,7 @@ use DI\Annotation\Injectable;
  * @package App\Repository
  * @Injectable(lazy=true)
  */
-class AreaRepository extends AbstractRepository
+class AreaBaseRepository extends AbstractBaseRepository
 {
     protected $primary = 'Code';
     protected $isSoftDelete = true;

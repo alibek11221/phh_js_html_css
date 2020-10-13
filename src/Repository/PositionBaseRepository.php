@@ -12,7 +12,7 @@ use DI\Annotation\Injectable;
  * @package App\Repository
  * @Injectable(lazy=true)
  */
-class PositionRepository extends AbstractRepository
+class PositionBaseRepository extends AbstractBaseRepository
 {
 
     /**

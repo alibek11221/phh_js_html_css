@@ -4,27 +4,27 @@ declare(strict_types=1);
 
 namespace App\Controllers;
 
-use App\Repository\AreaRepository;
-use App\Repository\SchoolRepository;
+use App\Repository\AreaBaseRepository;
+use App\Repository\SchoolBaseRepository;
 use Pecee\Http\Response;
 
 class AreaController extends AbstractController
 {
     /**
-     * @var AreaRepository
+     * @var AreaBaseRepository
      */
     private $areaRepository;
     /**
-     * @var SchoolRepository
+     * @var SchoolBaseRepository
      */
     private $schoolRepository;
 
     /**
      * AreaController constructor.
-     * @param AreaRepository $areaRepository
-     * @param SchoolRepository $schoolRepository
+     * @param AreaBaseRepository $areaRepository
+     * @param SchoolBaseRepository $schoolRepository
      */
-    public function __construct(AreaRepository $areaRepository, SchoolRepository $schoolRepository)
+    public function __construct(AreaBaseRepository $areaRepository, SchoolBaseRepository $schoolRepository)
     {
         $this->areaRepository = $areaRepository;
         $this->schoolRepository = $schoolRepository;

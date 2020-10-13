@@ -7,7 +7,7 @@ namespace App\Repository;
 use App\Config\TableNames;
 use App\Core\Dbo;
 
-class RsurIntermediateElementResultsRepository extends AbstractRepository
+class RsurIntermediateElementResultsRepository extends AbstractBaseRepository
 {
 
     /**
@@ -111,5 +111,17 @@ class RsurIntermediateElementResultsRepository extends AbstractRepository
         );
 
         return $this->getMany($sql, ['razdel' => $razdelId, 'test' => $testId, 'particip' => $participCode]);
+    }
+
+    public function getResultsForTeachrSide(string $participCode, int $testId, int $razdelId): array
+    {
+        $sql = sprintf(
+                'SELECT pure_percent, round_percent, grade, created_at, updated_at FROM %s
+                WHERE rsur_razdel_id = :razdel
+                AND rsur_particip_code = :particip
+                AND rsur_test_id = :test',
+                $this::getTableName()
+        );
+        return $this->getMany($sql, ['razdel' => $razdelId, 'particip' => $participCode, 'test' => $testId]);
     }
 }

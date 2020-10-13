@@ -1,0 +1,60 @@
+{% extends 'CardBlanket.html.twig' %}
+{% block stylesheets %}
+    <link rel="stylesheet" href="/public/css/ionicons/ionicons.css">
+    <link rel="stylesheet" href="/public/css/myaccordion.css">
+    <link rel="stylesheet" href="/public/css/card.css">
+{% endblock %}
+{% block content %}
+    <div class="base  mx-3 my-3">
+        {% for test in tests %}
+            <div class="my_accordion js-accordion">
+                <div class="my_accordion__item {% if  test.test_grade == 5 %} good {% else %} bad {% endif %}  js-accordion-item">
+                    <div class="my_accordion-header {% if  test.test_grade == 5 %} good {% else %} bad {% endif %} js-accordion-header">{{ test.year_value }}
+                        - {{ test.subject_name }}
+                        ({{ test.test_type_name }}
+                        ) {% if  test.test_grade == 5 %} - зачет {% else %} - незачет {% endif %}
+                    </div>
+                    <div class="my_accordion-body js-accordion-body">
+                        <div class="my_accordion-body__contents">
+                            {% if test.razdels %}
+                                {% set razdelsCount = 1 %}
+                                <div style="display: flex; flex-wrap: wrap; flex-direction: row; justify-content:space-evenly;  align-items: center;">
+                                    {% for razdel in test.razdels %}
+                                        <div class="card_container " id="razd_{{ razdel.id }}_{{ test.test_id }}">
+                                            <div class="card">
+                                                <div class="front">{{ razdel.name }} </div>
+                                                <div class="back">
+                                                    {{ razdel.result.grade }} - оценка
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% set razdelsCount = razdelsCount + 1 %}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                            {#                          {% for razdel in test.razdels %}#}
+
+                            {#                            {% endfor %}#}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    {#    <div class="el-content">#}
+    {#        <div class="flex-evenly-center my-2" id="razdels">#}
+
+    {#        </div>#}
+    {#    </div>#}
+    {#    <div class="rating-box mx-1 mt-1" id="cards">#}
+    {#    </div>#}
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script>
+        $('.card_container').on('click', function () {
+            var card = $(this).find('.card');
+            card.toggleClass('flipped');
+        });
+    </script>
+{% endblock %}

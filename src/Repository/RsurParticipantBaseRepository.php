@@ -9,7 +9,7 @@ use App\Config\TableNames;
 use App\Core\Dbo;
 use App\Services\RazdelService;
 
-class RsurParticipantRepository extends AbstractRepository
+class RsurParticipantBaseRepository extends AbstractBaseRepository
 {
     protected $primary = 'code';
     protected $isSoftDelete = true;
@@ -51,7 +51,7 @@ class RsurParticipantRepository extends AbstractRepository
         $particips = $this->getMany($sql, ['schoolid' => $schoolId, 'testid' => $testId]);
         $output = [];
         foreach ($particips as $particip) {
-            if ($this->razdelService->GetGrade($razdelId, (int)$particip['code']) === 2) {
+            if ($this->razdelService->getGrade($razdelId, $particip['code']) === 2) {
                 $output[] = $particip;
             }
         }

@@ -8,8 +8,8 @@ namespace App\Controllers;
 use App\Domain\Dialog;
 use App\Domain\DialogParticipant;
 use App\Repository\DialogsRepository;
-use App\Repository\ParticipantDirectorRepository;
-use App\Repository\VacancyResponseRepository;
+use App\Repository\ParticipantDirectorBaseRepository;
+use App\Repository\VacancyResponseBaseRepository;
 use Pecee\SimpleRouter\SimpleRouter;
 use Twig\Error\LoaderError;
 use Twig\Error\RuntimeError;
@@ -18,7 +18,7 @@ use Twig\Error\SyntaxError;
 class VacancyResponseController extends AbstractController
 {
     /**
-     * @var VacancyResponseRepository
+     * @var VacancyResponseBaseRepository
      */
     private $vacancyResponseRepository;
     /**
@@ -26,20 +26,20 @@ class VacancyResponseController extends AbstractController
      */
     private $dialogsRepository;
     /**
-     * @var ParticipantDirectorRepository
+     * @var ParticipantDirectorBaseRepository
      */
     private $participantDirectorRepository;
 
     /**
      * VacancyResponseController constructor.
-     * @param VacancyResponseRepository $vacancyResponseRepository
+     * @param VacancyResponseBaseRepository $vacancyResponseRepository
      * @param DialogsRepository $dialogsRepository
-     * @param ParticipantDirectorRepository $participantDirectorRepository
+     * @param ParticipantDirectorBaseRepository $participantDirectorRepository
      */
     public function __construct(
-            VacancyResponseRepository $vacancyResponseRepository,
+            VacancyResponseBaseRepository $vacancyResponseRepository,
             DialogsRepository $dialogsRepository,
-            ParticipantDirectorRepository $participantDirectorRepository
+            ParticipantDirectorBaseRepository $participantDirectorRepository
     ) {
         $this->vacancyResponseRepository = $vacancyResponseRepository;
         $this->dialogsRepository = $dialogsRepository;

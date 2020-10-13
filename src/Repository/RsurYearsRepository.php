@@ -6,7 +6,7 @@ namespace App\Repository;
 
 use App\Config\TableNames;
 
-class RsurYearsRepository extends AbstractRepository
+class RsurYearsRepository extends AbstractBaseRepository
 {
 
     public static function getTableName(): string
@@ -14,7 +14,7 @@ class RsurYearsRepository extends AbstractRepository
         return TableNames::RSUR['years'];
     }
 
-    public function findAll(): array
+    public function findAllYearsWithEnteringTests(): array
     {
         $query = sprintf(
                 'SELECT ry.id   AS year_id,

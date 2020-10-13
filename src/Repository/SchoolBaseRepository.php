@@ -12,7 +12,7 @@ use DI\Annotation\Injectable;
  * @package App\Repository
  * @Injectable(lazy=true)
  */
-class SchoolRepository extends AbstractRepository
+class SchoolBaseRepository extends AbstractBaseRepository
 {
 
     public function findAll(): array

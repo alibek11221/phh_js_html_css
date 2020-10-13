@@ -5,14 +5,14 @@ namespace App\Middleware;
 
 
 use App\Domain\AuthenticatedUser;
-use App\Repository\ParticipantDirectorRepository;
+use App\Repository\ParticipantDirectorBaseRepository;
 use DI\Annotation\Inject;
 
 trait AuthenticatedUserDataTrait
 {
     /**
      * @Inject
-     * @var ParticipantDirectorRepository
+     * @var ParticipantDirectorBaseRepository
      */
     private $participantDirectorRepository;
 

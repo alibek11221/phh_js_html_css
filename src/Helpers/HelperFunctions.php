@@ -18,9 +18,9 @@ use Pecee\SimpleRouter\SimpleRouter as Router;
  * You can also use the same syntax when searching for a specific controller-class "MyController@home".
  * If no arguments is specified, it will return the url for the current loaded route.
  *
- * @param string|null       $name
+ * @param string|null $name
  * @param string|array|null $parameters
- * @param array|null        $getParams
+ * @param array|null $getParams
  *
  * @return Url
  * @throws InvalidArgumentException
@@ -49,9 +49,9 @@ function request(): Request
 /**
  * Get input class
  *
- * @param string|null $index        Parameter index name
+ * @param string|null $index Parameter index name
  * @param string|null $defaultValue Default return value
- * @param array       ...$methods   Default methods
+ * @param array ...$methods Default methods
  *
  * @return InputHandler|array|string|null
  */
@@ -65,7 +65,7 @@ function input($index = null, $defaultValue = null, ...$methods)
 }
 
 /**
- * @param string   $url
+ * @param string $url
  * @param int|null $code
  */
 function redirect(string $url, ?int $code = null): void

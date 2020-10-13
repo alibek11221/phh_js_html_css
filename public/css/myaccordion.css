@@ -1,0 +1,104 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css?family=Roboto+Mono");
+.my_accordion {
+  font-size: 1rem;
+  border-radius: 5px;
+}
+
+.my_accordion-header,
+.my_accordion-body {
+  background: white;
+}
+
+.my_accordion-header {
+  padding: 1.5em 1.5em;
+  background: #3F51B5;
+  color: white;
+  cursor: pointer;
+  letter-spacing: 0.1em;
+  transition: all 0.3s;
+  text-transform: uppercase;
+}
+.my_accordion-header.good {
+  background: #7ac142;
+}
+.my_accordion-header.bad {
+  background: #ce181e;
+}
+
+.my_accordion__item {
+  border-bottom: 1px solid #3a4ba4;
+}
+.my_accordion__item.good {
+  border-bottom: 1px solid #629d33;
+}
+.my_accordion__item.bad {
+  border-bottom: 1px solid #a01317;
+}
+
+.my_accordion__item .my_accordion__item {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.my_accordion-header:hover {
+  background: #2D3D99;
+  position: relative;
+  z-index: 5;
+}
+.my_accordion-header:hover.good {
+  background: #629d33;
+}
+.my_accordion-header:hover.bad {
+  background: #a01317;
+}
+
+.my_accordion-body {
+  background: #fcfcfc;
+  color: #353535;
+  display: none;
+}
+
+.my_accordion-body__contents {
+  padding: 1.5em 1.5em;
+  font-size: 0.85em;
+}
+
+.my_accordion__item.active:last-child .my_accordion-header {
+  border-radius: 0;
+}
+
+.my_accordion:first-child > .my_accordion__item > .my_accordion-header {
+  border-bottom: 1px solid transparent;
+}
+
+.my_accordion__item > .my_accordion-header:after {
+  content: "";
+  font-family: IonIcons;
+  font-size: 1.2em;
+  float: right;
+  position: relative;
+  top: -2px;
+  transition: 0.3s all;
+  transform: rotate(0deg);
+}
+
+.my_accordion__item.active > .my_accordion-header:after {
+  transform: rotate(-180deg);
+}
+
+.my_accordion__item.active .my_accordion-header {
+  background: #2D3D99;
+}
+.my_accordion__item.active .my_accordion-header.good {
+  background: #629d33;
+}
+.my_accordion__item.active .my_accordion-header.bad {
+  background: #a01317;
+}
+
+.my_accordion__item .my_accordion__item .my_accordion-header {
+  background: #f1f1f1;
+  color: #ffffff;
+}
+
+/*# sourceMappingURL=myaccordion.css.map */

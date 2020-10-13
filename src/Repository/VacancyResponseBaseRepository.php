@@ -12,7 +12,7 @@ use DI\Annotation\Injectable;
  * @package App\Repository
  * @Injectable(lazy=true)
  */
-class VacancyResponseRepository extends AbstractRepository
+class VacancyResponseBaseRepository extends AbstractBaseRepository
 {
     public function findById(int $id): array
     {

@@ -14,7 +14,7 @@ use DI\Annotation\Injectable;
  * @package App\Repository
  * @Injectable(lazy=true)
  */
-class ParticipantDirectorRepository extends AbstractRepository
+class ParticipantDirectorBaseRepository extends AbstractBaseRepository
 {
 
     public function findAuthenticatedUsersData(): ?AuthenticatedUser
@@ -24,18 +24,18 @@ class ParticipantDirectorRepository extends AbstractRepository
         return $stmt->fetchObject(AuthenticatedUser::class);
     }
 
-    public function findUserData(int $id): ?User
-    {
-        $stmt = $this->dbo->prepare(sprintf("SELECT * FROM %s WHERE id = :id", $this::getTableName()));
-        $stmt->execute([':id' => $id]);
-        return $stmt->fetchObject(User::class);
-    }
-
     /**
      * @return string
      */
     final public static function getTableName(): string
     {
         return TableNames::PARTICIPANT_DIRECTOR;
+    }
+
+    public function findUserData(int $id): ?User
+    {
+        $stmt = $this->dbo->prepare(sprintf("SELECT * FROM %s WHERE id = :id", $this::getTableName()));
+        $stmt->execute([':id' => $id]);
+        return $stmt->fetchObject(User::class);
     }
 }
